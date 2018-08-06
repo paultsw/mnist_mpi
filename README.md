@@ -25,9 +25,11 @@ Distributed Architecture
 
 MPIRUN on SGE
 -------------
+In general, you can run MPI-based programs on SGE clusters with the following commands:
+
 For Python programs:
 ```
-$ qrsh -l h_vmem=15G -pe mpi <NHOSTS>
+$ qrsh -l h_vmem=15G -pe mpi <NHOSTS>    # request a shell with multiple hosts
 $ mpirun -n <NPROCESSES> python your_spmd_program_here.py
 ```
 
@@ -37,6 +39,15 @@ $ qrsh -l h_vmem=15G -pe mpi <NHOSTS>
 $ mpirun -n <NPROCESSES> ./binary_program
 ```
 
+Training a network with our demo script in particular can be done via the following:
+```
+$ qrsh -l h_vmem=15G -pe mpi 4
+$ mpirun -n 4 python dist_train.py
+```
+Hyperparameters (learning rate, momentum, batch size, number of epochs) can be set with the appropriate flags;
+see `$ python dist_train.py --help` for more details.
+
+On my computer, the validation loss on MNIST is roughly 0.035% after 10 epochs.
 
 License
 -------
