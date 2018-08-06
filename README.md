@@ -47,7 +47,7 @@ $ mpirun -n 4 python dist_train.py
 Hyperparameters (learning rate, momentum, batch size, number of epochs) can be set with the appropriate flags;
 see `$ python dist_train.py --help` for more details.
 
-On my computer, the validation loss on MNIST is roughly 0.035% after 10 epochs.
+On my computer, the validation loss on MNIST is roughly `0.035` (= 3.5%) after 10 epochs.
 
 License
 -------
